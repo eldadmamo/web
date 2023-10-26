@@ -1,13 +1,10 @@
-import {User} from './models/User';
+import axios from 'axios';
+import {AxiosResponse} from "axios/index";
 
-const user  = User.buildUser({id: 1});
-
-user.on('save', () => {
-    console.log(user);
-})
-
-user.fetch();
-
+axios.get('http://localhost:3000/users')
+    .then((response: AxiosResponse) => {
+        console.log(response.data);
+    })
 
 // class Person {
 //     constructor(public firstName: string, public lastName: string) {
