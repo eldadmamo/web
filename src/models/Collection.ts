@@ -1,10 +1,12 @@
-import axios, {request} from 'axios'
-import {User, UsersProps} from "./User";
+import axios from 'axios'
+
 import {Eventing} from "./Eventing";
 import {AxiosResponse} from "axios/index";
 
 export class Collection<T, K>{
-    constructor(public models: User[] = [], public events: Eventing = new Eventing(), public rootUrl: string, public deserialize: (json:K) => T) {
+    public models: T[] = [];
+    public events: Eventing = new Eventing()
+    constructor(public rootUrl: string, public deserialize: (json:K) => T) {
     }
 
     get on() {

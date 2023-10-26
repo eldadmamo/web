@@ -1,10 +1,14 @@
-import axios from 'axios';
-import {AxiosResponse} from "axios/index";
+import {Collection} from "./models/Collection";
+import {User, UsersProps} from "./models/User";
 
-axios.get('http://localhost:3000/users')
-    .then((response: AxiosResponse) => {
-        console.log(response.data);
-    })
+
+const collection  = User.buildUserCollection();
+
+collection.on('change', () => {
+    console.log(collection);
+})
+
+collection.fetch();
 
 // class Person {
 //     constructor(public firstName: string, public lastName: string) {
